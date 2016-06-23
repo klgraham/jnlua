@@ -1,7 +1,7 @@
 # Paths
-JDK_DIR=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0
-LUA_LIB_DIR=/usr/lib
-LUA_INC_DIR=/usr/include/lua
+JDK_DIR=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/include
+LUA_LIB_DIR=/Users/kgraham/Tools/torch/install/lib
+LUA_INC_DIR=/Users/kgraham/Tools/torch/install/include
 VERSION=5.1
 
 # Tools
@@ -19,7 +19,7 @@ libjnlua$(VERSION).jnilib: jnlua.o
 	$(LD) $(LDFLAGS) -o libjnlua$(VERSION).jnilib -L$(LUA_LIB_DIR) -lc -llua$(VERSION) jnlua.o
 
 jnlua.o: ../jnlua.c
-	$(CC) $(CFLAGS) -I$(JDK_DIR)/Headers -I$(LUA_INC_DIR) ../jnlua.c
+	$(CC) $(CFLAGS) -I$(JDK_DIR) -I$(LUA_INC_DIR) ../jnlua.c
 
 clean:
 	-rm libjnlua$(VERSION).jnilib jnlua.o
